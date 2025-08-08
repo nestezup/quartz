@@ -1,0 +1,12 @@
+[alias]
+    # 원본 저장소에서 최신 변경사항 가져오기
+    sync = !git fetch upstream && git merge upstream/v4
+    
+    # 원본과 동기화 후 포크에 푸시
+    sync-push = !git fetch upstream && git merge upstream/v4 && git push origin v4
+    
+    # 원본 변경사항 미리보기
+    upstream-log = !git log HEAD..upstream/v4 --oneline
+    
+    # 원격 저장소 상태 확인
+    remotes = remote -v 

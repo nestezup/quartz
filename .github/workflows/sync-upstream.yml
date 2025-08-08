@@ -1,0 +1,33 @@
+name: Sync upstream
+
+on:
+  schedule:
+    # 매주 월요일 오전 9시에 실행
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # 수동 실행 가능
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Sync upstream
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # 원본 저장소 추가
+          git remote add upstream https://github.com/jackyzha0/quartz.git
+          
+          # 원본에서 최신 변경사항 가져오기
+          git fetch upstream
+          
+          # 현재 브랜치를 원본과 동기화
+          git merge upstream/v4
+          
+          # 포크된 저장소에 푸시
+          git push origin v4 

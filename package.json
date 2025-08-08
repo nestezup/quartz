@@ -17,7 +17,10 @@
     "check": "tsc --noEmit && npx prettier . --check",
     "format": "npx prettier . --write",
     "test": "tsx --test",
-    "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1"
+    "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
+    "dev": "npx quartz build && npx serve public -p 4000",
+    "build": "npx quartz build",
+    "serve": "npx serve public -p 4000"
   },
   "engines": {
     "npm": ">=10.9.2",

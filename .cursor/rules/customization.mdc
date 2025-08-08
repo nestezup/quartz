@@ -1,0 +1,87 @@
+# Quartz 커스터마이징 가이드
+
+## 레이아웃 수정 (quartz.layout.ts)
+
+### 컴포넌트 위치 변경
+```typescript
+export const defaultContentPageLayout: PageLayout = {
+  beforeBody: [
+    Component.Breadcrumbs(),
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+    Component.TagList(), // 여기에 추가
+  ],
+  left: [
+    Component.PageTitle(),
+    Component.Search(),
+    Component.Darkmode(),
+    Component.Explorer(),
+  ],
+  right: [
+    Component.Graph(),
+    Component.TableOfContents(),
+    Component.Backlinks(), // 백링크 제거하려면 이 줄 삭제
+  ],
+}
+```
+
+### 백링크 비활성화
+```typescript
+right: [
+  Component.Graph(),
+  Component.DesktopOnly(Component.TableOfContents()),
+  // Component.Backlinks(), // 이 줄을 주석 처리
+],
+```
+
+## 설정 수정 (quartz.config.ts)
+
+### 테마 색상 변경
+```typescript
+theme: {
+  colors: {
+    lightMode: {
+      light: "#ffffff", // 배경색
+      secondary: "#007acc", // 강조색
+    },
+    darkMode: {
+      light: "#1a1a1a", // 다크모드 배경
+      secondary: "#4a9eff", // 다크모드 강조색
+    },
+  },
+}
+```
+
+### 폰트 변경
+```typescript
+typography: {
+  header: "나눔고딕",
+  body: "나눔바른고딕",
+  code: "Fira Code",
+},
+```
+
+### 플러그인 설정
+```typescript
+plugins: {
+  transformers: [
+    Plugin.FrontMatter(),
+    Plugin.SyntaxHighlighting({
+      theme: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+    }),
+    // 추가 플러그인들...
+  ],
+}
+```
+
+## 변경사항 적용
+1. 설정 파일 수정
+2. `npx quartz build` 실행
+3. `npx serve public -p 4000`로 확인
+description:
+globs:
+alwaysApply: false
+---
