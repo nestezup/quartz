@@ -1,3 +1,405 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// 모던 미니멀 테마 🎯
+:root {
+  // 모던 컬러 팔레트 - 세련되고 깔끔한 색상
+  --primary: #0F172A;      // 슬레이트 900 - 주요 요소
+  --secondary: #3B82F6;    // 블루 500 - 링크와 강조
+  --tertiary: #6366F1;     // 인디고 500 - 호버 효과
+  --accent: #8B5CF6;       // 바이올렛 500 - 포인트 컬러
+  
+  // 배경색 - 깔끔하고 현대적인 톤
+  --light: #FFFFFF;        // 순백 - 메인 배경
+  --lightgray: #F8FAFC;    // 슬레이트 50 - 보조 배경
+  --gray: #CBD5E1;         // 슬레이트 300 - 구분선
+  
+  // 텍스트 색상 - 가독성과 세련함
+  --dark: #0F172A;         // 슬레이트 900 - 제목
+  --darkgray: #334155;     // 슬레이트 700 - 본문
+  
+  // 강조 색상 - 미니멀하고 우아한
+  --highlight: #E0E7FF;    // 인디고 100 - 하이라이트
+  --textHighlight: #FEF3C7; // 앰버 100 - 텍스트 하이라이트
+  
+  // 추가 컬러 - 모던한 상태 표시
+  --success: #10B981;      // 에메랄드 500
+  --warning: #F59E0B;      // 앰버 500
+  --error: #EF4444;        // 레드 500
+  --info: #06B6D4;         // 사이안 500
+}
+
+// 다크모드 - 세련된 다크 테마
+[data-theme="dark"] {
+  --light: #0F172A;        // 슬레이트 900
+  --lightgray: #1E293B;    // 슬레이트 800
+  --gray: #475569;         // 슬레이트 600
+  
+  --dark: #F8FAFC;         // 슬레이트 50
+  --darkgray: #CBD5E1;     // 슬레이트 300
+  
+  --highlight: #1E40AF;    // 인디고 800
+  --textHighlight: #92400E; // 앰버 800
+}
+
+// 모던한 타이포그래피
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  
+  // 이모지 제거하고 모던한 스타일 적용
+  &::before {
+    display: none;
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  border-bottom: 3px solid var(--secondary);
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--dark);
+  border-bottom: 2px solid var(--gray);
+  padding-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--dark);
+}
+
+h4, h5, h6 {
+  font-size: 1.25rem;
+  color: var(--darkgray);
+}
+
+// 모던한 링크 스타일링
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 1px solid transparent;
+  
+  &:hover {
+    color: var(--tertiary);
+    border-bottom-color: var(--tertiary);
+    transform: translateY(-1px);
+  }
+  
+  &.internal {
+    background: var(--highlight);
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    border: 1px solid var(--secondary);
+    font-size: 0.9em;
+    
+    &:hover {
+      background: var(--secondary);
+      color: var(--light);
+      border-color: var(--tertiary);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    }
+  }
+}
+
+// 모던한 코드 블록
+pre {
+  background: var(--lightgray);
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  
+  // 이모지 제거
+  &::before {
+    display: none;
+  }
+  
+  code {
+    font-family: 'IBM Plex Mono', 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+// 모던한 인라인 코드
+code {
+  background: var(--lightgray);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'IBM Plex Mono', 'Fira Code', monospace;
+  color: var(--accent);
+  border: 1px solid var(--gray);
+}
+
+// 모던한 블록쿼트
+blockquote {
+  background: linear-gradient(135deg, var(--lightgray), var(--highlight));
+  border-left: 4px solid var(--secondary);
+  border-radius: 0 8px 8px 0;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--darkgray);
+  
+  p {
+    margin: 0;
+  }
+}
+
+// 모던한 리스트 스타일
+ul, ol {
+  padding-left: 1.5rem;
+  
+  li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+}
+
+ul li {
+  list-style-type: none;
+  position: relative;
+  
+  &::before {
+    content: "•";
+    color: var(--secondary);
+    font-weight: bold;
+    position: absolute;
+    left: -1rem;
+  }
+}
+
+// 모던한 테이블
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gray);
+  }
+  
+  th {
+    background: var(--lightgray);
+    font-weight: 600;
+    color: var(--dark);
+  }
+  
+  tr:hover {
+    background: var(--highlight);
+  }
+}
+
+// 모던한 수평선
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gray), transparent);
+  margin: 2rem 0;
+}
+
+// 모던한 체크박스
+input[type="checkbox"] {
+  appearance: none;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid var(--gray);
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  
+  &:checked {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    
+    &::after {
+      content: "✓";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 0.8em;
+      font-weight: bold;
+    }
+  }
+}
+
+// 모던한 버튼 스타일
+button {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    background: var(--tertiary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// 모던한 카드 스타일
+.card {
+  background: var(--light);
+  border: 1px solid var(--gray);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+}
+
+// 모던한 배지
+.badge {
+  display: inline-block;
+  background: var(--highlight);
+  color: var(--secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--secondary);
+}
+
+// 모던한 알림 스타일
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border-left: 4px solid;
+  
+  &.info {
+    background: rgba(59, 130, 246, 0.1);
+    border-left-color: var(--info);
+    color: var(--info);
+  }
+  
+  &.success {
+    background: rgba(16, 185, 129, 0.1);
+    border-left-color: var(--success);
+    color: var(--success);
+  }
+  
+  &.warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-left-color: var(--warning);
+    color: var(--warning);
+  }
+  
+  &.error {
+    background: rgba(239, 68, 68, 0.1);
+    border-left-color: var(--error);
+    color: var(--error);
+  }
+}
+
+// 모던한 그리드 레이아웃
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  
+  &.cols-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  &.cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+// 모던한 애니메이션
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+// 모던한 스크롤바
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lightgray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 4px;
+  
+  &:hover {
+    background: var(--secondary);
+  }
+}
+
+// 모던한 포커스 스타일
+*:focus {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+// 모던한 선택 스타일
+::selection {
+  background: var(--highlight);
+  color: var(--dark);
+}
+
+// 반응형 개선
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  
+  .grid.cols-2,
+  .grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  pre {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+}
